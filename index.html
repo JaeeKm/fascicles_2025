@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -11,11 +10,14 @@
       text-align: center;
       padding: 40px;
       background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
     button {
-      margin: 10px;
-      padding: 10px 20px;
-      font-size: 1.1rem;
+      margin: 20px auto;
+      padding: 12px 24px;
+      font-size: 1.2rem;
       border: none;
       border-radius: 8px;
       cursor: pointer;
@@ -27,82 +29,35 @@
     }
     #sentence {
       margin-top: 40px;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       color: #333;
       opacity: 0;
       transition: opacity 1s ease-in;
     }
-    #controls {
-      margin-top: 20px;
+    .links {
+      margin-top: 30px;
       display: none;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .links a {
+      font-size: 1.1rem;
+      color: #007acc;
+      text-decoration: none;
+    }
+    .links a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      margin-top: auto;
+      font-size: 0.9rem;
+      color: #aaa;
+      padding-top: 60px;
     }
   </style>
 </head>
 <body>
 
-  <h1>주제를 선택하세요</h1>
+  <button onclick="showRandomSentence()">문장 보기</button>
 
-  <div>
-    <button onclick="selectTopic('응원')">응원</button>
-    <button onclick="selectTopic('위로')">위로</button>
-    <button onclick="selectTopic('동기부여')">동기부여</button>
-  </div>
-
-  <div id="sentence">👇 버튼을 눌러 문장을 확인하세요</div>
-
-  <div id="controls">
-    <button onclick="reshuffle()">다시 뽑기</button>
-    <button onclick="copyLink()">링크 복사</button>
-  </div>
-
-  <script>
-    const sentences = {
-      '응원': [
-        "당신은 할 수 있어요!",
-        "늘 당신을 응원합니다.",
-        "오늘도 빛나는 하루가 될 거예요."
-      ],
-      '위로': [
-        "지금 충분히 잘하고 있어요.",
-        "괜찮아요, 잠시 쉬어도 돼요.",
-        "모든 감정은 지나갑니다."
-      ],
-      '동기부여': [
-        "작은 걸음도 전진입니다.",
-        "오늘의 노력이 내일의 당신을 만듭니다.",
-        "포기하지 마세요, 끝이 보일 거예요."
-      ]
-    };
-
-    let currentTopic = '';
-
-    function selectTopic(topic) {
-      currentTopic = topic;
-      showRandomSentence();
-      document.getElementById('controls').style.display = 'block';
-    }
-
-    function showRandomSentence() {
-      const list = sentences[currentTopic];
-      const randomIndex = Math.floor(Math.random() * list.length);
-      const sentenceDiv = document.getElementById("sentence");
-      sentenceDiv.style.opacity = 0;
-      setTimeout(() => {
-        sentenceDiv.textContent = list[randomIndex];
-        sentenceDiv.style.opacity = 1;
-      }, 100);
-    }
-
-    function reshuffle() {
-      showRandomSentence();
-    }
-
-    function copyLink() {
-      navigator.clipboard.writeText(location.href)
-        .then(() => alert('링크가 복사되었습니다!'))
-        .catch(() => alert('복사에 실패했습니다.'));
-    }
-  </script>
-
-</body>
-</html>
+  <div id="sentence">👇 버튼을 눌러 문장을 확인하세요</div
