@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>오늘의 디킨슨</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #fffdf7;
+      color: #333;
+      padding: 60px 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 40px;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 6px;
+      background-color: #eae6df;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #ddd6cc;
+    }
+
+    #poem {
+      margin-top: 50px;
+      font-size: 1.5rem;
+      line-height: 1.6;
+      opacity: 0;
+      transition: opacity 1s ease-in;
+    }
+
+    footer {
+      margin-top: auto;
+      font-size: 0.9rem;
+      color: #aaa;
+      padding-top: 80px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📜 오늘의 디킨슨</h1>
+  <button onclick="showPoem()">오늘의 디킨슨</button>
+
+  <div id="poem">버튼을 눌러 오늘의 시를 감상해보세요.</div>
+
+  <footer>© 2025 Fascicles. All rights reserved.</footer>
+
+  <script>
+    const poems = [
+      "Hope is the thing with feathers – That perches in the soul –",
+      "I’m nobody! Who are you? Are you – nobody – too?",
+      "Forever – is composed of Nows –",
+      "Because I could not stop for Death – He kindly stopped for me –",
+      "I dwell in Possibility – A fairer House than Prose –",
+      "A word is dead when it is said, some say. I say it just begins to live that day."
+    ];
+
+    function showPoem() {
+      const randomIndex = Math.floor(Math.random() * poems.length);
+      const poemDiv = document.getElementById("poem");
+      poemDiv.style.opacity = 0;
+      setTimeout(() => {
+        poemDiv.textContent = poems[randomIndex];
+        poemDiv.style.opacity = 1;
+      }, 100);
+    }
+  </script>
+
+</body>
+</html>
